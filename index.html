@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Bitcoin Leverage Trading Calculator</title>
     <link rel="stylesheet" href="css/styles.css">
@@ -9,32 +8,41 @@
     <script type="text/javascript" src="js/chart.js"></script>
 </head>
 <body>
-<div class="header-container">
-    <div class="title-and-stats">
-        <div id="btc24hPrices">
-            <div id="btcHigh24hBox">
-                <h3>24h High</h3>
-                <p id="btcHigh24h">Loading...</p>
-            </div>
-            <div id="btcLow24hBox">
-                <h3>24h Low</h3>
-                <p id="btcLow24h">Loading...</p>
-            </div>
-        </div>
-    </div>>
 </div>
+
+<div class="right-side-box"> <!-- Ideal Leverage Calculator box -->
+    <h3>Ideal Leverage Calculator</h3>
+    <label for="btcValueInput">Level value($):</label>
+    <input type="number" id="btcValueInput" placeholder="e.g., 42000">
+    <label for="maxStopLossInput">Max Stop Loss (%):</label>
+    <input type="number" id="maxStopLossInput" placeholder="e.g., 3" step="0.01">
+    <button onclick="calculateIdealLeverage()">Calculate</button>
+    <div id="calculatedLeverage">Ideal Leverage: <span id="idealLeverageResult">--</span>x</div>
+</div>
+<div id="btc24hPrices">
+    <div id="btcHigh24hBox">
+        <h3>24h High</h3>
+        <p id="btcHigh24h">Loading...</p>
+    </div>
+    <div id="btcLow24hBox">
+        <h3>24h Low</h3>
+        <p id="btcLow24h">Loading...</p>
+    </div>
+</div>
+
 <div class="calculator-container">
     <h1>Bitcoin Leverage Trading Calculator</h1>
     <p id="timer">Last updated: 0min 0sec ago</p>
     <p>Current BTC Price: <span id="btcPrice" class="btc-price-value">Loading...</span></p>
     <p>Liquidation Price: $<span id="liqPrice">Calculating...</span></p>
     <p>Price Difference: $<span id="priceDifference">Calculating...</span></p>
+
     <div>
         <label for="leverageSlider">Leverage:</label>
         <input type="range" id="leverageSlider" class="slider" min="1" max="100" value="1" oninput="updateLeverageValue(); calculateTargets();">
         <span id="leverageValue">1x</span>
     </div>
-    <div class="chart-container" style="position: absolute; bottom: 80px; left: 10px; height: 35vh; width: 35%; background-color: rgba(14,10,9,0.42);">
+    <div class="chart-container" style="position: absolute; bottom: 40px; left: 10px; height: 35vh; width: 35%; background-color: rgba(14,10,9,0.42);">
         <canvas id="btcChart"></canvas>
     </div>
 
@@ -46,6 +54,8 @@
         <label for="positionSizeInput">MY OWN Money USD:</label>
         <input type="number" id="positionSizeInput" value="100" onchange="calculateTargets()">
     </div>
+
+    <h4></h4>
     <table id="priceTable">
         <thead>
         <tr>
@@ -63,6 +73,9 @@
 </div>
 <footer class="footer">
     <p class="footer-text">Created by <span class="signature">melown</span></p>
+    <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider round"></span>
     </label>
 </footer>
 </body>

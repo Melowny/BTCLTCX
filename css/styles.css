@@ -1,37 +1,34 @@
+/* Add this CSS code to your existing <style> tag in the <head> section */
 .footer {
     text-align: right;
-    position: fixed; /* Changed from absolute to fixed */
-    bottom: 10px;
-    right: 100px;
+    position: absolute;
+    bottom: 10px; /* Adjust this value to move it higher or lower */
+    right: 100px; /* Keep it at the right side */
     margin-bottom: 20px;
     font-family: 'Your-Handwritten-Font', cursive;
-    z-index: 10; /* To ensure it stays above other content */
 }
 
 .footer-text {
     font-size: 1em;
-    color: #999;
+    color: #999; /* Gray color for the text */
 }
 
 .signature {
-    font-family: 'Your-Handwritten-Font', cursive;
+    font-family: 'Your-Handwritten-Font', cursive; /* Use the same font as above */
     font-size: 1.2em;
-    color: #f7eb00;
+    color: #f7eb00; /* Yellow or any other color you prefer */
 }
-
 
 body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Make the width 100% to fill the entire viewport */
-    height: 100%;
+    height: 100vh;
     margin: 0;
     background: #121212; /* Dark background */
     color: #e0e0e0; /* Lighter text for contrast */
 }
-
 
 .calculator-container {
     border: 1px solid #333;
@@ -121,13 +118,17 @@ th {
     position: relative;
 }
 
-#leverageValue {
-    vertical-align: right; /* Align with the slider */
-    font-weight: bold; /* Make the font bold */
-    font-size: 1.8em; /* Increase the font size */
-    margin-left: 10px; /* Optional: Add some space between the slider and the value */
-    padding-right: 20px; /* Add padding to the right of the value */
+#leverageSlider::before,
+#leverageSlider::after,
+#leverageSlider::between {
+    content: "";
+    width: 1px; /* Width of the marker */
+    height: 100%;
+    background-color: #fff; /* Marker color */
+    position: absolute;
 }
+
+
 
 /* Additional styling for AMM indicator */
 .amm-indicator {
@@ -211,7 +212,7 @@ th {
 }
 
 #btcHigh24hBox, #btcLow24hBox {
-    padding: 0px;
+    padding: 15px;
     border: 1px solid #333;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
@@ -231,197 +232,59 @@ th {
     color: red; /* Set the color to red for btcLow24hBox */
 }
 
-@media (max-width: 767px) {
-    #btc24hPrices {
-        display: flex;
-        flex-direction: column; /* Stack boxes vertically */
-        justify-content: center;
-        align-items: center; /* Center align items */
-        margin-right: 0; /* Adjust margins as needed */
-        margin-bottom: 20px; /* Adjust bottom margin as needed */
-    }
-
-    #btcHigh24hBox, #btcLow24hBox {
-        width: auto; /* Adjust width to fit content */
-        margin-bottom: 10px; /* Space between boxes */
-    }
-}
-
 .tradingview-button:hover {
     border-color: #7a00ec; /* Change border color to orange on hover */
 }
-@media (max-width: 767px) {
-    .calculator-container {
-        width: 100%;
-        max-width: none; /* Override any max-width set */
-        margin: 0; /* Remove any horizontal margin */
-        padding: 10px; /* Adjust padding as needed */
-    }
-}
-
-
-/* Tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .calculator-container {
-        width: 90%;
-        margin: 10px;
-    }
-
-    h1, h2 {
-        font-size: 2em;
-    }
-}
-
-
-
-    h1, h2 {
-        font-size: 2.5em;
-    }
-}
-.calculator-container {
-    max-width: 600px;
-    width: 100%; /* Use percentage-based widths */
-}
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* For embedded videos or other media */
-.embed-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
-}
-
-.embed-container iframe {
+.round-button {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-body {
-    font-size: 16px; /* Default font size for desktop */
-}
-
-@media (max-width: 767px) {
-    body {
-        font-size: 14px; /* Smaller font size for mobile */
-    }
-}
-/* For mobile devices */
-@media (max-width: 767px) {
-    .bybit-button, .tradingview-button {
-        position: static; /* Change position to static or relative */
-        margin: 10px auto; /* Center the buttons with margin */
-        width: 80px; /* Adjust the size */
-        height: 80px;
-    }
-}
-
-/* For tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .bybit-button, .tradingview-button {
-        /* Slightly larger than mobile, but smaller than desktop */
-        width: 90px;
-        height: 90px;
-    }
-}
-/* For mobile devices */
-@media (max-width: 767px) {
-    .bybit-button, .tradingview-button {
-        position: static; /* Change position to static or relative */
-        margin: 10px auto; /* Center the buttons with margin */
-        width: 80px; /* Adjust the size */
-        height: 80px;
-        visibility:hidden;
-    }
-}
-
-/* For tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .bybit-button, .tradingview-button {
-        /* Slightly larger than mobile, but smaller than desktop */
-        width: 90px;
-        height: 90px;
-        visibility:hidden;
-    }
-}
-.chart-container {
-    position: absolute;
-    bottom: 80px;
-    left: 10px;
-    height: 35vh;
-    width: 35%;
-    background-color: rgba(14, 10, 9, 0.42);
-}
-/* Hide the chart on mobile devices */
-@media (max-width: 767px) {
-    .chart-container {
-        display: none;
-    }
-}
-
-/* Hide the chart on tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .chart-container {
-        display: none;
-    }
-}
-/* Desktop and larger devices */
-@media (min-width: 1024px) {
-    .chart-container {
-        /* Your desktop-specific styles (if any) */
-        display: block; /* Ensure it's visible */
-    }
-}
-.title-and-stats {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    /* Other styling as needed */
+    justify-content: center;
+    transition: border-color 0.3s ease-in-out;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    transform: translateZ(0);
+    box-shadow: 0 5px 15px rgb(14, 10, 9); /* Add box shadow for 3D effect */
 }
 
-#btc24hPrices {
-    /* Your existing styles for this element */
+.round-button:hover {
+    border-color: #ff9800;
+    transform: translateZ(5px); /* Move the button slightly towards the viewer on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Increase the box shadow on hover */
 }
-@media (max-width: 767px) {
-    .header-container {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .title-and-stats {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #btc24hPrices {
-        order: 2; /* Move the 24h prices below the title */
-        display: flex;
-        flex-direction: row; /* Align 24h High and Low boxes horizontally */
-    }
-
-    #btcHigh24hBox, #btcLow24hBox {
-        flex: 1; /* Each box takes equal width */
-    }
-
-    .calculator-container, .other-main-content {
-        width: 100%; /* Make main content fill the screen */
-        /* Adjust padding, margins as needed */
-    }
+.content-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: flex-start; /* Align content to the left */
 }
-@media (max-width: 767px) {
-    .footer {
-        right: 10px; /* Adjust this value as needed */
-    }
+
+.main-content {
+    flex: 1;
+    align-self: flex-start; /* Align main content to the left */
+    margin-left: 100px; /* Add some left margin to the main content */
 }
-@media (max-width: 767px) {
-    #btcHigh24hBox, #btcLow24hBox {
-        flex: 1; /* Each box takes equal width */
-        max-width: 50%; /* Ensure they do not exceed half the container's width */
-        box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    }
+
+.chart-container {
+    align-self: flex-end; /* Align chart container to the bottom left */
+}
+
+/* Additional styling for the "Ideal Leverage Calculator" box */
+.right-side-box {
+    top: 10px; /* Adjust the vertical position as needed */
+    right: 10px; /* Adjust the horizontal position as needed */
+    width: 300px;
+    background-color: #4418c5;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius:10px;
+}
+/* Add this CSS code to your existing <style> tag in the <head> section */
+#calculatedLeverage {
+    margin-top: 10px; /* Add margin at the top to separate it from the previous elements */
+    font-size: 1.2em; /* Adjust the font size as needed */
 }

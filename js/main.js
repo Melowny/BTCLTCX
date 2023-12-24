@@ -151,6 +151,38 @@ function updateBTCPricePeriodically() {
 }
 // Get the toggle switch element
 const themeToggle = document.getElementById("themeToggle");
+function calculateIdealLeverage() {
+    var userLevelValue = parseFloat(document.getElementById('btcValueInput').value);
+    var maxStopLossPercentage = parseFloat(document.getElementById('maxStopLossInput').value) / 100;
 
+    if (isNaN(userLevelValue) || isNaN(maxStopLossPercentage)) {
+        alert('Please enter valid numbers for both Level Value and Max Stop Loss');
+        return;
+    }
 
+    if (userLevelValue >= btcPrice) {
+        alert('Level value must be below the current BTC price');
+        return;
+    }
 
+    var closestLeverage = 1;
+    var minDifference = Infinity;
+
+    for (let leverage = 1; leverage <= 100; leverage++) {
+        let stopLossPrice = calculateStopLossPrice(btcPrice, leverage, maxStopLossPercentage);
+        let difference = Math.abs(stopLossPrice - userLevelValue);
+
+        if (difference < minDifference && stopLossPrice <= userLevelValue) {
+            minDifference = difference;
+            closestLeverage = leverage;
+        }
+    }
+
+    document.getElementById('idealLeverageResult').textContent = closestLeverage + 'x';
+}
+
+function calculateStopLossPrice(currentBTCPrice, leverage, maxStopLossPercentage) {
+    // Calculate the stop loss price for a given leverage
+    // Adjust this formula as needed
+    return currentBTCPrice - (currentBTCPrice * maxStopLossPercentage / leverage);
+}
