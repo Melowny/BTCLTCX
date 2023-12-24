@@ -1,0 +1,209 @@
+/* Add this CSS code to your existing <style> tag in the <head> section */
+.footer {
+    text-align: right;
+    position: absolute;
+    bottom: 10px; /* Adjust this value to move it higher or lower */
+    right: 100px; /* Keep it at the right side */
+    margin-bottom: 20px;
+    font-family: 'Your-Handwritten-Font', cursive;
+}
+
+.footer-text {
+    font-size: 1em;
+    color: #999; /* Gray color for the text */
+}
+
+.signature {
+    font-family: 'Your-Handwritten-Font', cursive; /* Use the same font as above */
+    font-size: 1.2em;
+    color: #f7eb00; /* Yellow or any other color you prefer */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #121212; /* Dark background */
+    color: #e0e0e0; /* Lighter text for contrast */
+}
+
+.calculator-container {
+    border: 1px solid #333;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    background-color: #1e1e1e; /* Darker shade for container */
+    width: 80%;
+    max-width: 600px;
+}
+
+h1, h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff; /* White for headings */
+}
+
+p, th, td {
+    font-size: 1.1em;
+}
+
+.increase { color: #4caf50; } /* Green for increase */
+.decrease { color: #f44336; } /* Red for decrease */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+}
+
+th, td {
+    border-bottom: 1px solid #333;
+    padding: 8px;
+    text-align: left;
+    background-color: #1e1e1e; /* Darker shade for table rows */
+    color: #e0e0e0; /* Lighter text for table rows */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #242424; /* Slightly different shade for alternate rows */
+}
+
+th {
+    background-color: #333;
+}
+
+.slider {
+    -webkit-appearance: none;
+    height: 15px;
+    background: #333;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.slider:hover { opacity: 1; }
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4caf50;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4caf50;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    .calculator-container {
+        width: 105%;
+        margin: 10px;
+    }
+}
+#leverageSlider {
+    /* existing styles */
+    margin-right: 6px;
+    margin-bottom: 20px;/* Add some spacing between the slider and the value */
+}
+
+#leverageValue {
+    vertical-align: middle; /* Align with the slider */
+    font-weight: bold; /* Make the font bold */
+    font-size: 1.8em; /* Increase the font size */
+    margin-left: 10px; /* Optional: Add some space between the slider and the value */
+}
+
+/* Additional styling for AMM indicator */
+.amm-indicator {
+    width: 60px;
+    background-color: #5521f3; /* Blue color for AMM indicator */
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.btc-price-value {
+    color: #f7eb00;
+    font-size:1.5em/* Grey orange color */
+}
+/* Add this CSS code to the existing <style> tag */
+.bybit-button {
+    position: absolute;
+    bottom: 420px; /* Adjust the vertical position as needed */
+    right: 7%; /* Adjust the horizontal position as needed */
+    width: 110px; /* Adjust the button's width */
+    height: 110px; /* Adjust the button's height */
+    background-color: #000000; /* Green color for the button */
+    border-radius: 50%; /* Make it round */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #f7eb00; /* Orange border */
+    transition: border-color 0.3s ease-in-out; /* Smooth border color transition */
+}
+
+.bybit-button a {
+    text-decoration: none;
+    color: #fff; /* White text color */
+    font-weight: bold;
+}
+
+.bybit-button:hover {
+    border-color: #ff9800; /* Change border color to orange on hover */
+}
+.tradingview-button {
+    position: absolute;
+    bottom: 289px; /* Adjust the vertical position as needed */
+    right: 7%; /* Adjust the horizontal position as needed */
+    width: 110px; /* Adjust the button's width */
+    height: 110px; /* Adjust the button's height */
+    background-color: #2196F3; /* Blue color for the button */
+    border-radius: 50%; /* Make it round */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #39bb17; /* Orange border */
+    transition: border-color 0.3s ease-in-out; /* Smooth border color transition */
+}
+
+.tradingview-button a {
+    text-decoration: none;
+    color: #fff; /* White text color */
+    font-weight: bold;
+}
+
+.tradingview-button:hover {
+    border-color: #7a00ec; /* Change border color to orange on hover */
+}
+.round-button {
+    position: absolute;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s ease-in-out;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    transform: translateZ(0);
+    box-shadow: 0 5px 15px rgb(14, 10, 9); /* Add box shadow for 3D effect */
+}
+
+.round-button:hover {
+    border-color: #ff9800;
+    transform: translateZ(5px); /* Move the button slightly towards the viewer on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Increase the box shadow on hover */
+}
