@@ -133,8 +133,15 @@ th {
     font-weight: bold;
     font-size: 1.1em;
 }
+.price-up {
+    color: #4caf50; /* Green color for increase */
+}
+
+.price-down {
+    color: #f44336; /* Red color for decrease */
+}
+
 .btc-price-value {
-    color: #f7eb00;
     font-size:1.5em/* Grey orange color */
 }
 /* Add this CSS code to the existing <style> tag */
@@ -181,6 +188,48 @@ th {
     text-decoration: none;
     color: #fff; /* White text color */
     font-weight: bold;
+}
+/* Existing styles */
+
+/* ... (keep your existing styles as they are) ... */
+
+/* Styles for the 24h high and low price boxes */
+#btc24hPrices {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 10px;
+    margin-bottom: 450px;
+
+}
+
+#btcHigh24hBox, #btcLow24hBox {
+    padding: 15px;
+    border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    text-align: center;
+    min-width: 120px; /* Set a minimum width for each box */
+}
+
+#btcHigh24hBox h3, #btcLow24hBox h3 {
+    margin: ;
+    color: #f7eb00; /* Style for the header text */
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+    #btc24hPrices {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #btcHigh24hBox, #btcLow24hBox {
+        margin-bottom: 10px;
+        width: 80%; /* Adjust width on smaller screens */
+    }
 }
 
 .tradingview-button:hover {
