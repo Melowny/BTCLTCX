@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Bitcoin Leverage Trading Calculator</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/chart.js"></script>
 </head>
 <body>
 <div id="btc24hPrices">
@@ -28,12 +30,19 @@
         <input type="range" id="leverageSlider" class="slider" min="1" max="100" value="1" oninput="updateLeverageValue(); calculateTargets();">
         <span id="leverageValue">1x</span>
     </div>
+    <div class="chart-container" style="position: absolute; bottom: 80px; left: 10px; height: 35vh; width: 35%; background-color: rgba(14,10,9,0.42);">
+        <canvas id="btcChart"></canvas>
+    </div>
+
     <div class="round-button bybit-button" onclick="window.open('https://www.bybit.com/trade/inverse/BTCUSD', '_blank')">Bybit</div>
     <div class="round-button tradingview-button" onclick="window.open('https://www.tradingview.com/symbols/BTCUSD//', '_blank')">TradingView</div>
     <div>
-        <label for="positionSizeInput">Position Size (USD):</label>
+        <h3>
+        </h3>
+        <label for="positionSizeInput">MY OWN Money USD:</label>
         <input type="number" id="positionSizeInput" value="100" onchange="calculateTargets()">
     </div>
+    <h4></h4>
     <table id="priceTable">
         <thead>
         <tr>
@@ -52,6 +61,5 @@
 <footer class="footer">
     <p class="footer-text">Created by <span class="signature">melown</span></p>
 </footer>
-<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

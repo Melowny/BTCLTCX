@@ -1,6 +1,39 @@
 let btcPrice = null;
 let btcHigh24h = null;
 let btcLow24h = null;
+let btcPriceData = []; // Array to store price data for the chart
+let btcTimestamps = []; // Array to store timestamps for the chart
+
+document.addEventListener('DOMContentLoaded', async () => {
+    var ctx = document.getElementById('btcChart').getContext('2d');
+    window.btcChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: btcTimestamps,
+            datasets: [{
+                label: 'BTC Price',
+                data: btcPriceData,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+
+    updateLeverageValue();
+    await fetchBTCPriceFromBybit();
+    updateBTCPriceDisplay();
+    updateBTCPricePeriodically();
+    // Additional initialization for new box (if needed)
+    initializeNewBox();
+});
 
 async function fetchBTCPriceFromBybit() {
     try {
@@ -12,6 +45,18 @@ async function fetchBTCPriceFromBybit() {
             btcPrice = btcTicker.last_price;
             btcHigh24h = btcTicker.high_price_24h;
             btcLow24h = btcTicker.low_price_24h;
+
+            btcPriceData.push(btcPrice);
+            btcTimestamps.push(new Date().toLocaleTimeString());
+
+            if (btcPriceData.length > 50) {
+                btcPriceData.shift();
+                btcTimestamps.shift();
+            }
+
+            window.btcChart.data.labels = btcTimestamps;
+            window.btcChart.data.datasets[0].data = btcPriceData;
+            window.btcChart.update();
         } else {
             btcPrice = null;
             btcHigh24h = null;
@@ -23,6 +68,8 @@ async function fetchBTCPriceFromBybit() {
         btcHigh24h = null;
         btcLow24h = null;
     }
+    update24hPricesDisplay();
+    updateBTCPriceDisplay();
 }
 
 function update24hPricesDisplay() {
@@ -35,51 +82,25 @@ function update24hPricesDisplay() {
     }
 }
 
-let timerInterval;
-function startTimer() {
-    let seconds = 15;
-    timerInterval = setInterval(function() {
-        if (seconds > 0) {
-            document.getElementById('timer').innerText = `Updating in: ${seconds}sec`;
-        } else if (seconds === 0) {
-            clearInterval(timerInterval);
-            document.getElementById('timer').innerText = 'Updating...';
-        }
-        seconds--;
-    }, 1000);
-}
-
-async function updateBTCPriceDisplay() {
+function updateBTCPriceDisplay() {
     if (btcPrice) {
         const btcPriceElement = document.getElementById('btcPrice');
         btcPriceElement.innerText = btcPrice;
         btcPriceElement.classList.remove('price-up', 'price-down');
 
-        // Change color based on 24-hour high
         if (btcPrice > btcHigh24h) {
-            btcPriceElement.classList.add('price-up'); // Green if higher than 24h high
+            btcPriceElement.classList.add('price-up');
         } else {
-            btcPriceElement.classList.add('price-down'); // Red otherwise
+            btcPriceElement.classList.add('price-down');
         }
 
         calculateTargets();
-        clearInterval(timerInterval);
-        startTimer();
     } else {
         document.getElementById('btcPrice').innerText = 'Unavailable';
     }
-    update24hPricesDisplay();
 }
 
-function updateBTCPricePeriodically() {
-    const updateInterval = 15000;
-    setInterval(async () => {
-        await fetchBTCPriceFromBybit();
-        updateBTCPriceDisplay();
-    }, updateInterval);
-}
-
-async function calculateTargets() {
+function calculateTargets() {
     if (!btcPrice) {
         document.getElementById('liqPrice').innerText = 'Unavailable';
         document.getElementById('priceDifference').innerText = 'Unavailable';
@@ -124,9 +145,7 @@ function updateLeverageValue() {
     document.getElementById('leverageValue').innerText = leverageValue + 'x';
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-    updateLeverageValue();
-    await fetchBTCPriceFromBybit();
-    updateBTCPriceDisplay();
-    updateBTCPricePeriodically();
-});
+function updateBTCPricePeriodically() {
+    const updateInterval = 15000;
+    setInterval(fetchBTCPriceFromBybit, updateInterval);
+}

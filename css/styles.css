@@ -24,11 +24,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%; /* Make the width 100% to fill the entire viewport */
     height: 100vh;
     margin: 0;
     background: #121212; /* Dark background */
     color: #e0e0e0; /* Lighter text for contrast */
 }
+
 
 .calculator-container {
     border: 1px solid #333;
@@ -109,17 +111,21 @@ th {
         margin: 10px;
     }
 }
+/* Increase the size of the slidebar */
 #leverageSlider {
-    /* existing styles */
-    margin-right: 6px;
-    margin-bottom: 20px;/* Add some spacing between the slider and the value */
+    width: 65%; /* Adjust the width to your preference */
+    height: 20px; /* Adjust the height to your preference */
+    border: 1px solid #fff; /* Add a white border */
+    border-radius: 10px; /* Apply rounded edges */
+    position: relative;
 }
 
 #leverageValue {
-    vertical-align: middle; /* Align with the slider */
+    vertical-align: right; /* Align with the slider */
     font-weight: bold; /* Make the font bold */
     font-size: 1.8em; /* Increase the font size */
     margin-left: 10px; /* Optional: Add some space between the slider and the value */
+    padding-right: 20px; /* Add padding to the right of the value */
 }
 
 /* Additional styling for AMM indicator */
@@ -199,7 +205,7 @@ th {
     flex-direction: column;
     justify-content: space-around;
     margin-right: 10px;
-    margin-bottom: 450px;
+    margin-bottom: 470px;
 
 }
 
