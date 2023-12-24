@@ -1,23 +1,24 @@
-/* Add this CSS code to your existing <style> tag in the <head> section */
 .footer {
     text-align: right;
-    position: absolute;
-    bottom: 10px; /* Adjust this value to move it higher or lower */
-    right: 100px; /* Keep it at the right side */
+    position: fixed; /* Changed from absolute to fixed */
+    bottom: 10px;
+    right: 100px;
     margin-bottom: 20px;
     font-family: 'Your-Handwritten-Font', cursive;
+    z-index: 10; /* To ensure it stays above other content */
 }
 
 .footer-text {
     font-size: 1em;
-    color: #999; /* Gray color for the text */
+    color: #999;
 }
 
 .signature {
-    font-family: 'Your-Handwritten-Font', cursive; /* Use the same font as above */
+    font-family: 'Your-Handwritten-Font', cursive;
     font-size: 1.2em;
-    color: #f7eb00; /* Yellow or any other color you prefer */
+    color: #f7eb00;
 }
+
 
 body {
     font-family: Arial, sans-serif;
@@ -25,7 +26,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%; /* Make the width 100% to fill the entire viewport */
-    height: 100vh;
+    height: 100%;
     margin: 0;
     background: #121212; /* Dark background */
     color: #e0e0e0; /* Lighter text for contrast */
@@ -210,7 +211,7 @@ th {
 }
 
 #btcHigh24hBox, #btcLow24hBox {
-    padding: 15px;
+    padding: 0px;
     border: 1px solid #333;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
@@ -230,40 +231,197 @@ th {
     color: red; /* Set the color to red for btcLow24hBox */
 }
 
-/* Responsive design for smaller screens */
-@media screen and (max-width: 768px) {
+@media (max-width: 767px) {
     #btc24hPrices {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        flex-direction: column; /* Stack boxes vertically */
+        justify-content: center;
+        align-items: center; /* Center align items */
+        margin-right: 0; /* Adjust margins as needed */
+        margin-bottom: 20px; /* Adjust bottom margin as needed */
     }
 
     #btcHigh24hBox, #btcLow24hBox {
-        margin-bottom: 10px;
-        width: 80%; /* Adjust width on smaller screens */
+        width: auto; /* Adjust width to fit content */
+        margin-bottom: 10px; /* Space between boxes */
     }
 }
 
 .tradingview-button:hover {
     border-color: #7a00ec; /* Change border color to orange on hover */
 }
-.round-button {
-    position: absolute;
-    width: 95px;
-    height: 95px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.3s ease-in-out;
-    cursor: pointer;
-    color: #fff;
-    font-weight: bold;
-    transform: translateZ(0);
-    box-shadow: 0 5px 15px rgb(14, 10, 9); /* Add box shadow for 3D effect */
+@media (max-width: 767px) {
+    .calculator-container {
+        width: 100%;
+        max-width: none; /* Override any max-width set */
+        margin: 0; /* Remove any horizontal margin */
+        padding: 10px; /* Adjust padding as needed */
+    }
 }
 
-.round-button:hover {
-    border-color: #ff9800;
-    transform: translateZ(5px); /* Move the button slightly towards the viewer on hover */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Increase the box shadow on hover */
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .calculator-container {
+        width: 90%;
+        margin: 10px;
+    }
+
+    h1, h2 {
+        font-size: 2em;
+    }
+}
+
+
+
+    h1, h2 {
+        font-size: 2.5em;
+    }
+}
+.calculator-container {
+    max-width: 600px;
+    width: 100%; /* Use percentage-based widths */
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* For embedded videos or other media */
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+body {
+    font-size: 16px; /* Default font size for desktop */
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+}
+/* For mobile devices */
+@media (max-width: 767px) {
+    .bybit-button, .tradingview-button {
+        position: static; /* Change position to static or relative */
+        margin: 10px auto; /* Center the buttons with margin */
+        width: 80px; /* Adjust the size */
+        height: 80px;
+    }
+}
+
+/* For tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .bybit-button, .tradingview-button {
+        /* Slightly larger than mobile, but smaller than desktop */
+        width: 90px;
+        height: 90px;
+    }
+}
+/* For mobile devices */
+@media (max-width: 767px) {
+    .bybit-button, .tradingview-button {
+        position: static; /* Change position to static or relative */
+        margin: 10px auto; /* Center the buttons with margin */
+        width: 80px; /* Adjust the size */
+        height: 80px;
+        visibility:hidden;
+    }
+}
+
+/* For tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .bybit-button, .tradingview-button {
+        /* Slightly larger than mobile, but smaller than desktop */
+        width: 90px;
+        height: 90px;
+        visibility:hidden;
+    }
+}
+.chart-container {
+    position: absolute;
+    bottom: 80px;
+    left: 10px;
+    height: 35vh;
+    width: 35%;
+    background-color: rgba(14, 10, 9, 0.42);
+}
+/* Hide the chart on mobile devices */
+@media (max-width: 767px) {
+    .chart-container {
+        display: none;
+    }
+}
+
+/* Hide the chart on tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .chart-container {
+        display: none;
+    }
+}
+/* Desktop and larger devices */
+@media (min-width: 1024px) {
+    .chart-container {
+        /* Your desktop-specific styles (if any) */
+        display: block; /* Ensure it's visible */
+    }
+}
+.title-and-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Other styling as needed */
+}
+
+#btc24hPrices {
+    /* Your existing styles for this element */
+}
+@media (max-width: 767px) {
+    .header-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .title-and-stats {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #btc24hPrices {
+        order: 2; /* Move the 24h prices below the title */
+        display: flex;
+        flex-direction: row; /* Align 24h High and Low boxes horizontally */
+    }
+
+    #btcHigh24hBox, #btcLow24hBox {
+        flex: 1; /* Each box takes equal width */
+    }
+
+    .calculator-container, .other-main-content {
+        width: 100%; /* Make main content fill the screen */
+        /* Adjust padding, margins as needed */
+    }
+}
+@media (max-width: 767px) {
+    .footer {
+        right: 10px; /* Adjust this value as needed */
+    }
+}
+@media (max-width: 767px) {
+    #btcHigh24hBox, #btcLow24hBox {
+        flex: 1; /* Each box takes equal width */
+        max-width: 50%; /* Ensure they do not exceed half the container's width */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
 }

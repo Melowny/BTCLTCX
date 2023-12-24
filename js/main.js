@@ -149,3 +149,8 @@ function updateBTCPricePeriodically() {
     const updateInterval = 15000;
     setInterval(fetchBTCPriceFromBybit, updateInterval);
 }
+// Get the toggle switch element
+const themeToggle = document.getElementById("themeToggle");
+
+
+
