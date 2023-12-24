@@ -214,9 +214,14 @@ th {
     min-width: 120px; /* Set a minimum width for each box */
 }
 
-#btcHigh24hBox h3, #btcLow24hBox h3 {
+#btcHigh24hBox h3 {
     margin: ;
-    color: #f7eb00; /* Style for the header text */
+    color: green; /* Set the color to green for btcHigh24hBox */
+}
+
+#btcLow24hBox h3 {
+    margin: ;
+    color: red; /* Set the color to red for btcLow24hBox */
 }
 
 /* Responsive design for smaller screens */
